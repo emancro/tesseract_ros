@@ -57,6 +57,12 @@ int main(int argc, char** argv)
   pnh.param("ifopt", ifopt, ifopt);
   pnh.param("debug", debug, debug);
 
+  std::vector<double> sphere1;
+  pnh.param("sphere1", sphere1, sphere1);
+
+  Eigen::Vector3d sphere1_eigen(sphere1.data());
+
+
   if (ifopt == true)
   {
     ROS_INFO("Using TrajOpt Ifopt!");
@@ -81,6 +87,6 @@ int main(int argc, char** argv)
   if (plotting)
     plotter = std::make_shared<ROSPlotting>(env->getSceneGraph()->getRoot());
 
-  Xarm7Trajopt example(env, plotter, ifopt, debug);
+  Xarm7Trajopt example(env, plotter, ifopt, debug, sphere1_eigen);
   example.run();
 }
