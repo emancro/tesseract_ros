@@ -40,6 +40,26 @@ const std::string ROBOT_SEMANTIC_PARAM = "robot_description_semantic";
 /** @brief RViz Example Namespace */
 const std::string EXAMPLE_MONITOR_NAMESPACE = "tesseract_ros_examples";
 
+
+void init_vectorXd(Eigen::VectorXd& vec, std::vector<double> vec_in)
+{
+  vec.resize(vec_in.size());
+  for (int i = 0; i < vec_in.size(); i++)
+  {
+    vec(i) = vec_in[i];
+  }
+}
+
+void convert_deg_to_rad(Eigen::VectorXd& vec)
+{
+  for (int i = 0; i < vec.size(); i++)
+  {
+    vec(i) = vec(i) * M_PI / 180.0;
+  }
+}
+
+
+
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "xarm7_trajopt_node");
@@ -59,8 +79,20 @@ int main(int argc, char** argv)
 
   std::vector<double> sphere1;
   pnh.param("sphere1", sphere1, sphere1);
-
   Eigen::Vector3d sphere1_eigen(sphere1.data());
+
+  std::vector<double> arm_start;
+  pnh.param("arm_start", arm_start, arm_start);
+  Eigen::VectorXd arm_start_eig(arm_start.size());
+  init_vectorXd(arm_start_eig, arm_start);
+  convert_deg_to_rad(arm_start_eig);
+
+
+  std::vector<double> arm_end;
+  pnh.param("arm_end", arm_end, arm_end);
+  Eigen::VectorXd arm_end_eig(arm_end.size());
+  init_vectorXd(arm_end_eig, arm_end);
+  convert_deg_to_rad(arm_end_eig);  
 
 
   if (ifopt == true)
@@ -87,6 +119,6 @@ int main(int argc, char** argv)
   if (plotting)
     plotter = std::make_shared<ROSPlotting>(env->getSceneGraph()->getRoot());
 
-  Xarm7Trajopt example(env, plotter, ifopt, debug, sphere1_eigen);
+  Xarm7Trajopt example(env, plotter, ifopt, debug, sphere1_eigen, arm_start_eig, arm_end_eig);
   example.run();
 }
