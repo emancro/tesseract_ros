@@ -27,7 +27,7 @@
       <param name="debug" type="bool" value="$(arg debug)"/>
       <rosparam param="sphere1">[0.55, 0.0, 0.93]</rosparam>
       <rosparam param="arm_start">[-6.743198, 19.705852, -64.548508, 69.072812, 21.487693, 60.97795, -76.365075]</rosparam>
-      <rosparam param="arm_end">[62.326406, -27.328139, -22.639854, 43.441603, -2.873383, 67.85224, 45.414411]</rosparam>
+      <rosparam param="arm_end">[34.306134, -5.092162, 64.94087, 157.72938, 91.257624, -9.589423, 14.746616]</rosparam>
     </node>
 
     <!-- Launch visualization -->
