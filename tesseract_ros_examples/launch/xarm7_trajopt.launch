@@ -7,7 +7,7 @@
   <arg name="plotting" default="true"/>
   <arg name="rviz" default="true"/>
   <arg name="ifopt" default="false"/>
-  <arg name="debug" default="false"/>
+  <arg name="debug" default="true"/>
   <arg name="testing" default="false"/>
 
   <!-- Load universal robot description format (URDF) -->
@@ -28,6 +28,12 @@
       <rosparam param="sphere1">[0.55, 0.0, 0.93]</rosparam>
       <rosparam param="arm_start">[-6.743198, 19.705852, -64.548508, 69.072812, 21.487693, 60.97795, -76.365075]</rosparam>
       <rosparam param="arm_end">[34.306134, -5.092162, 64.94087, 157.72938, 91.257624, -9.589423, 14.746616]</rosparam>
+
+      <rosparam param="final_pose_xyz">[0.35, 0.35, 0.1]</rosparam>
+      <!-- <rosparam param="final_pose_xyz">[ 0.4, 0.0, -0.3]</rosparam> -->
+      <rosparam param="final_pose_euler">[-179.659225, 8.05974, 12.787043]</rosparam>
+      
+
     </node>
 
     <!-- Launch visualization -->
