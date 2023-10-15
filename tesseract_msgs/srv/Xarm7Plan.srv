@@ -1,0 +1,5 @@
+sensor_msgs/JointState initial_joint_state
+float64[] final_pose_euler
+float64[] final_pose_xyz
+---
+tesseract_msgs/JointTrajectory result_trajectory

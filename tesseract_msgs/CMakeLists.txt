@@ -98,6 +98,7 @@ add_service_files(
     GetEnvironmentInformation.srv
     ModifyEnvironment.srv
     SaveSceneGraph.srv
+    Xarm7Plan.srv
 )
 
 add_action_files(
